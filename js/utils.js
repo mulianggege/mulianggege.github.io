@@ -254,7 +254,7 @@ const btf = {
     selector.forEach(function (i) {
       if (!btf.isHidden(i)) {
         fjGallery(i, {
-          itemSelector: '.fj-gallery-item',
+          itemSelector: '.fj-photos-item',
           rowHeight: 220,
           gutter: 4,
           onJustify: function () {

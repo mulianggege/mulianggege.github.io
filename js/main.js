@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#article-container img').forEach(function (item) {
       const parentEle = item.parentNode
       const altValue = item.title || item.alt
-      if (altValue && !parentEle.parentNode.classList.contains('justified-gallery')) {
+      if (altValue && !parentEle.parentNode.classList.contains('justified-photos')) {
         const ele = document.createElement('div')
         ele.className = 'img-alt is-center'
         ele.textContent = altValue
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * justified-gallery 圖庫排版
+   * justified-photos 圖庫排版
    */
   const runJustifiedGallery = function (ele) {
     ele.forEach(item => {
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
       $imgList.forEach(i => {
         const dataLazySrc = i.getAttribute('data-lazy-src')
         if (dataLazySrc) i.src = dataLazySrc
-        btf.wrap(i, 'div', { class: 'fj-gallery-item' })
+        btf.wrap(i, 'div', { class: 'fj-photos-item' })
       })
     })
 
@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', function (e) {
           const $this = this
           $this.classList.add('open')
-          const $fjGallery = $this.nextElementSibling.querySelectorAll('.fj-gallery')
+          const $fjGallery = $this.nextElementSibling.querySelectorAll('.fj-photos')
           $fjGallery.length && btf.initJustifiedGallery($fjGallery)
         })
       })
@@ -761,7 +761,7 @@ document.addEventListener('DOMContentLoaded', function () {
     GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption()
     scrollFn()
 
-    const $jgEle = document.querySelectorAll('#article-container .fj-gallery')
+    const $jgEle = document.querySelectorAll('#article-container .fj-photos')
     $jgEle.length && runJustifiedGallery($jgEle)
 
     runLightbox()
