@@ -9,7 +9,7 @@ document.addEventListener('visibilitychange', function () {
     }
     else {
         //返回当前页面时标签显示内容
-        document.title = '奶茶记得加两份的珍珠!' + OriginTitile;
+        document.title = '奶茶记得加两份的珍珠!';
         //两秒后变回正常标题
         titleTime = setTimeout(function () {
             document.title = OriginTitile;
