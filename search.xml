@@ -230,8 +230,8 @@
     
     <entry>
       <title>代码演示</title>
-      <link href="/2020/01/07/%E4%BB%A3%E7%A0%81%E5%9D%97%E6%BC%94%E7%A4%BA/%E6%BC%94%E7%A4%BA/"/>
-      <url>/2020/01/07/%E4%BB%A3%E7%A0%81%E5%9D%97%E6%BC%94%E7%A4%BA/%E6%BC%94%E7%A4%BA/</url>
+      <link href="/2020/01/07/%E5%85%B6%E4%BB%96/%E6%BC%94%E7%A4%BA/"/>
+      <url>/2020/01/07/%E5%85%B6%E4%BB%96/%E6%BC%94%E7%A4%BA/</url>
       
         <content type="html"><![CDATA[<p>‘’’<br>file_get_content<br><?phpif (isset($_POST['url'])) { $content = file_get_contents($_POST['url']); $filename ='./images/'.rand().';img1.jpg’; file_put_contents($filename, $content); echo $_POST['url’]; $img = "<img src=\"".$filename."\"/>"; } echo $img; ?></p><p>fsockopen<br>&lt;?php</p><p>function GetFile($host, $port, $link)<br>{<br>    &#x2F;&#x2F;fsockopen() 将返回一个文件句柄，之后可以被其他文件类函数调用<br>    &#x2F;&#x2F;（例如： fgets() ， fgetss() ，<br>    &#x2F;&#x2F; fwrite() ， fclose() 还有 feof() ）。如果调用失败，将返回 FALSE 。<br>    $fp &#x3D; fsockopen($host, intval($port), $errno, $errstr, 30);<br>    if (!$fp) {<br>        echo “$errstr (error number $errno) \n”;<br>    } else {<br>        $out &#x3D; “GET $link HTTP&#x2F;1.1\r\n”;<br>        $out .&#x3D; “Host: $host\r\n”;<br>        $out .&#x3D; “Connection: Close\r\n\r\n”;<br>        $out .&#x3D; “\r\n”;<br>        fwrite($fp, $out);<br>        $contents &#x3D; ‘’;<br>        while (! feof($fp)) {<br>            $contents .&#x3D; fgets($fp, 1024);<br>        }<br>        fclose($fp);<br>        return $contents;<br>    }<br>}<br>$host &#x3D; $_GET[‘host’];<br>$port &#x3D; $_GET[‘port’];<br>$link &#x3D; $_GET[‘link’];</p><p>curl_exec<br><?php if (isset($_POST['url'])){$link = $_POST['url’];$curlobj = curl_init();curl_setopt($curlobj, CURLOPT_POST, 0);curl_setopt($curlobj,CURLOPT_URL,$link);curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);$result=curl_exec($curlobj);curl_close($curlobj);$filename = './curled/'.rand().'.txt’;file_put_contents($filename, $result); echo $result;}?></p>]]></content>
       
